@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <meta name="description" content="Track your daily habits, build streaks, and visualize your progress with Habit Tracker." />
+  <title>Habit Tracker — Home</title>
+  <link rel="stylesheet" href="css/styles.css?v=2" />
+</head>
+<body>
+  <div class="app-container" id="app">
+
+    <!-- ===== Header ===== -->
+    <header class="header" id="header">
+      <p class="header-date" id="headerDate"></p>
+      <h1 class="header-greeting" id="headerGreeting">Good Morning!</h1>
+      <p class="header-subtitle">You're building something great!</p>
+
+      <div class="progress-section">
+        <div class="progress-label">
+          <span>Today's Progress</span>
+          <span id="progressText">0/0</span>
+        </div>
+        <div class="progress-bar-track">
+          <div class="progress-bar-fill" id="progressBar" style="width: 0%"></div>
+        </div>
+      </div>
+    </header>
+
+    <!-- ===== Motivational Quote ===== -->
+    <div class="quote-bar" id="quoteBar"></div>
+
+    <!-- ===== Category Filter ===== -->
+    <div class="category-filter" id="categoryFilter"></div>
+
+    <!-- ===== Habit List ===== -->
+    <h2 class="section-title">Today's Habits</h2>
+    <div class="habit-list" id="habitList"></div>
+
+    <!-- ===== FAB ===== -->
+    <button class="fab" id="fabAdd" aria-label="Add Habit">+</button>
+
+    <!-- ===== Add Habit Modal ===== -->
+    <div class="modal-overlay" id="modalOverlay">
+      <div class="modal">
+        <div class="modal-handle"></div>
+        <h2>Add New Habit</h2>
+
+        <div class="modal-field">
+          <label for="habitName">Habit Name</label>
+          <input type="text" id="habitName" placeholder="e.g. Drink Water" maxlength="40" />
+        </div>
+        <div class="modal-field">
+          <label for="habitDesc">Description</label>
+          <input type="text" id="habitDesc" placeholder="e.g. 8 glasses daily" maxlength="60" />
+        </div>
+
+        <!-- Category Chips -->
+        <div class="modal-field">
+          <label>Category</label>
+          <input type="hidden" id="habitCategory" value="Health" />
+          <div class="chip-group" id="categoryChips"></div>
+        </div>
+
+        <!-- Icon Grid (always visible) -->
+        <div class="modal-field">
+          <label>Icon</label>
+          <input type="hidden" id="habitIcon" />
+          <div class="icon-grid" id="iconGrid"></div>
+        </div>
+
+        <!-- Target Days -->
+        <div class="modal-field">
+          <label>Target Days</label>
+          <div class="day-selector">
+            <button type="button" class="day-chip active" data-day="daily" id="dailyBtn">Daily</button>
+          </div>
+          <div class="day-selector" id="dayChips" style="margin-top:8px;"></div>
+        </div>
+
+        <div class="modal-actions">
+          <button class="btn btn-secondary" id="btnCancel">Cancel</button>
+          <button class="btn btn-primary" id="btnSave">Save Habit</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== Bottom Navigation ===== -->
+    <nav class="bottom-nav">
+      <a href="index.html" class="nav-item active" id="navHome">
+        <span class="nav-icon">🏠</span> Home
+      </a>
+      <a href="analytics.html" class="nav-item" id="navAnalytics">
+        <span class="nav-icon">📊</span> Analytics
+      </a>
+      <a href="calendar.html" class="nav-item" id="navCalendar">
+        <span class="nav-icon">📅</span> Calendar
+      </a>
+      <a href="settings.html" class="nav-item" id="navSettings">
+        <span class="nav-icon">⚙️</span> Settings
+      </a>
+    </nav>
+  </div>
+
+  <script src="js/storage.js?v=2"></script>
+  <script src="js/auth.js?v=2"></script>
+  <script src="js/app.js?v=2"></script>
+</body>
+</html>

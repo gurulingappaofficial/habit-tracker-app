@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <title>Login — Habit Tracker</title>
+  <link rel="stylesheet" href="css/styles.css?v=2" />
+</head>
+<body class="login-page">
+  <div class="login-container fade-in">
+    <div class="login-card">
+      <div class="login-header">
+        <div class="login-logo">✨</div>
+        <h1>Welcome Back!</h1>
+        <p>Login to track your progress and build better habits.</p>
+      </div>
+      
+      <form id="loginForm" class="login-form">
+        <div class="form-group">
+          <label for="userName">Full Name</label>
+          <input type="text" id="userName" placeholder="Enter your name" required maxlength="30" />
+        </div>
+        
+        <div class="form-group">
+          <label for="userPhone">Phone Number</label>
+          <input type="tel" id="userPhone" placeholder="Enter phone number" required maxlength="15" />
+        </div>
+        
+        <button type="submit" class="btn btn-primary btn-block">Get Started</button>
+      </form>
+      
+      <p class="login-footer">Your data is saved locally for your privacy.</p>
+    </div>
+  </div>
+
+  <script src="js/storage.js?v=2"></script>
+  <script src="js/auth.js?v=2"></script>
+  <script>
+    document.getElementById('loginForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('userName').value.trim();
+      const phone = document.getElementById('userPhone').value.trim();
+      
+      if (name && phone) {
+        handleLogin(name, phone);
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <meta name="description" content="Customize your Habit Tracker with dark mode, notifications, and more." />
+  <title>Habit Tracker — Settings</title>
+  <link rel="stylesheet" href="css/styles.css?v=2" />
+</head>
+<body>
+  <div class="app-container" id="app">
+
+    <!-- ===== Header ===== -->
+    <header class="header">
+      <p class="header-date">Preferences</p>
+      <h1 class="header-greeting">Settings ⚙️</h1>
+      <p class="header-subtitle">Customize your experience</p>
+    </header>
+
+    <!-- ===== Settings ===== -->
+    <h2 class="section-title">Appearance</h2>
+    <div class="settings-section">
+
+      <!-- Dark Mode -->
+      <div class="settings-card">
+        <div class="settings-card-info">
+          <div class="settings-icon">🌙</div>
+          <div>
+            <div class="settings-label">Dark Mode</div>
+            <div class="settings-desc">Switch between light and dark theme</div>
+          </div>
+        </div>
+        <div class="toggle" id="darkModeToggle"></div>
+      </div>
+
+    </div>
+
+    <h2 class="section-title">Notifications</h2>
+    <div class="settings-section">
+
+      <!-- Notifications -->
+      <div class="settings-card">
+        <div class="settings-card-info">
+          <div class="settings-icon">🔔</div>
+          <div>
+            <div class="settings-label">Push Reminders</div>
+            <div class="settings-desc">Coming soon — push reminders</div>
+          </div>
+        </div>
+        <div class="toggle" style="opacity:0.4; cursor:not-allowed;"></div>
+      </div>
+
+    </div>
+
+    <h2 class="section-title">Data</h2>
+    <div class="settings-section">
+
+      <!-- Reset -->
+      <div class="settings-card" style="flex-direction: column; align-items: stretch;">
+        <div class="settings-card-info" style="margin-bottom: 14px;">
+          <div class="settings-icon">⚠️</div>
+          <div>
+            <div class="settings-label">Reset All Data</div>
+            <div class="settings-desc">Delete all habits and progress permanently</div>
+          </div>
+        </div>
+        <button class="btn-reset" id="resetBtn">Reset All Data</button>
+      </div>
+
+    </div>
+
+    <!-- ===== App Info ===== -->
+    <div class="app-info">
+      <h3>Habit Tracker</h3>
+      <p>Version 1.0</p>
+      <p>Built with ❤️</p>
+    </div>
+
+    <!-- ===== Bottom Navigation ===== -->
+    <nav class="bottom-nav">
+      <a href="index.html" class="nav-item" id="navHome">
+        <span class="nav-icon">🏠</span> Home
+      </a>
+      <a href="analytics.html" class="nav-item" id="navAnalytics">
+        <span class="nav-icon">📊</span> Analytics
+      </a>
+      <a href="calendar.html" class="nav-item" id="navCalendar">
+        <span class="nav-icon">📅</span> Calendar
+      </a>
+      <a href="settings.html" class="nav-item active" id="navSettings">
+        <span class="nav-icon">⚙️</span> Settings
+      </a>
+    </nav>
+  </div>
+
+  <script src="js/storage.js?v=2"></script>
+  <script src="js/auth.js?v=2"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      initStorage();
+
+      // --- Dark Mode Toggle ---
+      const toggle = document.getElementById('darkModeToggle');
+      if (getDarkMode()) toggle.classList.add('active');
+
+      toggle.addEventListener('click', () => {
+        const isDark = !getDarkMode();
+        setDarkMode(isDark);
+        applyDarkMode();
+        toggle.classList.toggle('active', isDark);
+      });
+
+      // --- Reset ---
+      document.getElementById('resetBtn').addEventListener('click', () => {
+        if (confirm('Are you sure you want to delete ALL habit data? This cannot be undone.')) {
+          resetAllData();
+          alert('All data has been reset.');
+          window.location.href = 'index.html';
+        }
+      });
+    });
+  </script>
+</body>
+</html>

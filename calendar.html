@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <meta name="description" content="View your habit history on a monthly calendar with completion indicators." />
+  <title>Habit Tracker — Calendar</title>
+  <link rel="stylesheet" href="css/styles.css?v=2" />
+</head>
+<body>
+  <div class="app-container" id="app">
+
+    <!-- ===== Header ===== -->
+    <header class="header">
+      <p class="header-date">Monthly View</p>
+      <h1 class="header-greeting">Calendar 📅</h1>
+      <p class="header-subtitle">Your habit history</p>
+    </header>
+
+    <!-- ===== Calendar Navigation ===== -->
+    <div class="calendar-nav">
+      <button id="prevMonth" aria-label="Previous month">◀</button>
+      <span class="calendar-month-label" id="monthLabel"></span>
+      <button id="nextMonth" aria-label="Next month">▶</button>
+    </div>
+
+    <!-- ===== Calendar Grid ===== -->
+    <div class="calendar-grid">
+      <div class="calendar-weekdays">
+        <span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span>
+        <span>Thu</span><span>Fri</span><span>Sat</span>
+      </div>
+      <div class="calendar-days" id="calendarDays"></div>
+    </div>
+
+    <!-- ===== Day Detail ===== -->
+    <div class="day-detail" id="dayDetail">
+      <h3 id="dayDetailTitle">—</h3>
+      <ul class="day-detail-list" id="dayDetailList"></ul>
+    </div>
+
+    <!-- ===== Bottom Navigation ===== -->
+    <nav class="bottom-nav">
+      <a href="index.html" class="nav-item" id="navHome">
+        <span class="nav-icon">🏠</span> Home
+      </a>
+      <a href="analytics.html" class="nav-item" id="navAnalytics">
+        <span class="nav-icon">📊</span> Analytics
+      </a>
+      <a href="calendar.html" class="nav-item active" id="navCalendar">
+        <span class="nav-icon">📅</span> Calendar
+      </a>
+      <a href="settings.html" class="nav-item" id="navSettings">
+        <span class="nav-icon">⚙️</span> Settings
+      </a>
+    </nav>
+  </div>
+
+  <script src="js/storage.js?v=2"></script>
+  <script src="js/auth.js?v=2"></script>
+  <script src="js/calendar.js?v=2"></script>
+</body>
+</html>
